@@ -4,7 +4,15 @@
 
 function pause(func, time) {
   return function () {
-    return setTimeout(func, time * 1000);
+    let timeStart= Date.now(); 
+    while (1) {
+      let timeEnd = Date.now()
+      if(timeEnd - timeStart == time*1000) {
+        func()
+        break
+      }
+    }
+    //return setTimeout(func, time * 1000);
   };
 }
 
